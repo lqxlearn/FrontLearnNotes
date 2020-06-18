@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何让用户选择是否离开当前页面？</title>
+</head>
+
+<body>
+    <div>
+        那么很简单，我们使用antd的Modal组件，以及lodash的deepclone(深拷贝)、_.isEqual(value, other)执行深比较来确定两者的值是否相等。
+    </div>
+    <div>1、页面加载时只执行onload <br />2、页面关闭时先执行onbeforeunload，最后onunload <br />3、页面刷新时先执行onbeforeunload，然后onunload，最后onload
+        <br /> </div>
+    <a href="http://www.microsoft.com">Click here to navigate to
+        www.microsoft.com</a>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    <script type="text/javascript">
+        // ; (function () {
+        //     var startTime = Math.ceil(new Date().getTime() / 1000), //单位秒
+        //         getDuration = function () {
+        //             var time = '',
+        //                 hours = 0,
+        //                 minutes = 0,
+        //                 seconds = 0,
+        //                 endTime = Math.ceil(new Date().getTime() / 1000),
+        //                 duration = endTime - startTime;
+
+        //             hours = Math.floor(duration / 3600); //停留小时数
+        //             minutes = Math.floor(duration % 3600 / 60); //停留分钟数
+        //             seconds = Math.floor(duration % 3600 % 60); //停留秒数
+
+        //             time = (hours < 10 ? '0' + hours : hours) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
+
+        //             return time;
+        //         };
+
+
+        //     window.onbeforeunload = function (e) {
+        //         var duration = getDuration();
+
+        //         //request(duration);
+        //     };
+        // })();
+        function closeIt(e) {
+            e = e || window.event;
+
+            // 兼容IE8和Firefox 4之前的版本
+            if (e) {
+                e.returnValue = '关闭提示';
+            }
+
+            // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+            return '关闭提示';
+        }
+        window.onbeforeunload = closeIt;
+
+    </script>
+</body>
+
+</html>
