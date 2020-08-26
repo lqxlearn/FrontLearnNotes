@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用的垂直居中办法</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 300px;
+        height: 200px;
+        position: relative;
+        background: red;
+        border: 1px solid yellow
+            /* margin:20px; */
+    }
+
+    .center {
+        background: yellow;
+    }
+
+    .box1 .center {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+
+    .box2 .center {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        top: 50%;
+        margin-top: -50px;
+    }
+
+    .box3 .center {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        top: 50%;
+        transform: translateY(-50%);
+        /* 高度必须是偶数否则有阴影 */
+
+    }
+
+    .boxx {
+        width: 300px;
+        height: 200px;
+        background: red;
+        display: flex;
+        align-items: center;
+        /*定义body的元素垂直居中*/
+        justify-content: center;
+        /*定义body的里的元素水平居中*/
+    }
+
+    .box4 .center {
+        width: 100px;
+        height: calc(100% - 60px);
+        /* 去掉head */
+    }
+
+    .container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .5);
+        text-align: center;
+        font-size: 0;
+        white-space: nowrap;
+        overflow: auto;
+    }
+
+    .container:after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .dialog {
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+        font-size: 14px;
+        white-space: normal;
+    }
+</style>
+
+<body>
+</body>
+<p>已知元素的宽高</p>
+<div class="box box1">
+    <div class="center"></div>
+</div>
+<div class="box box2">
+    <div class="center"></div>
+</div>
+<div class="box box3">
+    <div class="center"></div>
+</div>
+<div class="boxx box4">
+    <div class="center"></div>
+</div>
+<div class="container">
+    <div class="dialog">
+        look 
+    </div>
+</div>
+</body>
+
+</html>
